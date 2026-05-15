@@ -1,3 +1,6 @@
 
 # Ignore large checkpoints
 content/skin_cancer_outputs/checkpoints/
+
+# Ignore outputs checkpoints
+outputs/outputs/results/cv_results/**/checkpoints/
