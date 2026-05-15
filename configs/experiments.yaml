@@ -1,0 +1,183 @@
+# Ablation Study Experiment Definitions
+# This file defines all 15 experiments for the paper
+# Each experiment is identified by E{1-15}
+
+experiments:
+  E1:
+    name: "EfficientNet-B0 + BCE"
+    model_name: efficientnet_b0
+    loss_type: bce
+    weighted_sampler: false
+    smote: false
+    mixup: false
+    cutmix: false
+    cv_folds: 2
+    num_epochs: 20
+
+  E2:
+    name: "EfficientNet-B0 + Weighted BCE"
+    model_name: efficientnet_b0
+    loss_type: weighted_bce
+    weighted_sampler: false
+    smote: false
+    mixup: false
+    cutmix: false
+    cv_folds: 2
+    num_epochs: 20
+
+  E3:
+    name: "EfficientNet-B0 + Focal Loss"
+    model_name: efficientnet_b0
+    loss_type: focal
+    weighted_sampler: false
+    smote: false
+    mixup: false
+    cutmix: false
+    cv_folds: 2
+    num_epochs: 20
+
+  E4:
+    name: "EfficientNet-B0 + CB-Focal Loss"
+    model_name: efficientnet_b0
+    loss_type: cb_focal
+    weighted_sampler: false
+    smote: false
+    mixup: false
+    cutmix: false
+    cv_folds: 2
+    num_epochs: 20
+
+  E5:
+    name: "EfficientNet-B0 + CB-Focal Loss + WeightedRandomSampler"
+    model_name: efficientnet_b0
+    loss_type: cb_focal
+    weighted_sampler: true
+    smote: false
+    mixup: false
+    cutmix: false
+    cv_folds: 2
+    num_epochs: 20
+
+  E6:
+    name: "ConvNeXt-Tiny + BCE"
+    model_name: convnext_tiny
+    loss_type: bce
+    weighted_sampler: false
+    smote: false
+    mixup: false
+    cutmix: false
+    cv_folds: 2
+    num_epochs: 20
+
+  E7:
+    name: "ConvNeXt-Tiny + Weighted BCE"
+    model_name: convnext_tiny
+    loss_type: weighted_bce
+    weighted_sampler: false
+    smote: false
+    mixup: false
+    cutmix: false
+    cv_folds: 2
+    num_epochs: 20
+
+  E8:
+    name: "ConvNeXt-Tiny + Focal Loss"
+    model_name: convnext_tiny
+    loss_type: focal
+    weighted_sampler: false
+    smote: false
+    mixup: false
+    cutmix: false
+    cv_folds: 2
+    num_epochs: 20
+
+  E9:
+    name: "ConvNeXt-Tiny + CB-Focal Loss"
+    model_name: convnext_tiny
+    loss_type: cb_focal
+    weighted_sampler: false
+    smote: false
+    mixup: false
+    cutmix: false
+    cv_folds: 2
+    num_epochs: 20
+
+  E10:
+    name: "ConvNeXt-Tiny + CB-Focal Loss + WeightedRandomSampler"
+    model_name: convnext_tiny
+    loss_type: cb_focal
+    weighted_sampler: true
+    smote: false
+    mixup: false
+    cutmix: false
+    cv_folds: 2
+    num_epochs: 20
+
+  E11:
+    name: "ConvNeXt-Tiny + CB-Focal Loss + Mixup"
+    model_name: convnext_tiny
+    loss_type: cb_focal
+    weighted_sampler: false
+    smote: false
+    mixup: true
+    cutmix: false
+    cv_folds: 2
+    num_epochs: 20
+
+  E12:
+    name: "ConvNeXt-Tiny + CB-Focal Loss + CutMix"
+    model_name: convnext_tiny
+    loss_type: cb_focal
+    weighted_sampler: false
+    smote: false
+    mixup: false
+    cutmix: true
+    cv_folds: 2
+    num_epochs: 20
+
+  E13:
+    name: "ConvNeXt-Tiny + CB-Focal Loss + SMOTE"
+    model_name: convnext_tiny
+    loss_type: cb_focal
+    weighted_sampler: false
+    smote: true
+    mixup: false
+    cutmix: false
+    cv_folds: 2
+    num_epochs: 20
+
+  E14:
+    name: "Vision Transformer + CB-Focal Loss"
+    model_name: vit_small_patch16_224
+    loss_type: cb_focal
+    weighted_sampler: false
+    smote: false
+    mixup: false
+    cutmix: false
+    cv_folds: 2
+    num_epochs: 20
+
+  E15:
+    name: "Swin Transformer Tiny + CB-Focal Loss"
+    model_name: swin_tiny_patch4_window7_224
+    loss_type: cb_focal
+    weighted_sampler: false
+    smote: false
+    mixup: false
+    cutmix: false
+    cv_folds: 2
+    num_epochs: 20
+
+# Hyperparameter defaults (inherited by all experiments unless overridden)
+defaults:
+  batch_size: 8
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  optimizer: adamw
+  scheduler: cosine
+  use_amp: false
+  pretrained: true
+  image_size: 224
+  random_state: 42
+  early_stopping_patience: 5
+  early_stopping_metric: auprc

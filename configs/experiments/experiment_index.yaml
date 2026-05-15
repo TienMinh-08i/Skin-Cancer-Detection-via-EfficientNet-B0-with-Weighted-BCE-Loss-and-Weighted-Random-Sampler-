@@ -1,0 +1,135 @@
+E1:
+  name: EfficientNet-B0 + BCE
+  config_path: configs/experiments/config_E1.yaml
+  model: efficientnet_b0
+  loss: bce
+  weighted_sampler: false
+  smote: false
+  mixup: false
+  cutmix: false
+E2:
+  name: EfficientNet-B0 + Weighted BCE
+  config_path: configs/experiments/config_E2.yaml
+  model: efficientnet_b0
+  loss: weighted_bce
+  weighted_sampler: false
+  smote: false
+  mixup: false
+  cutmix: false
+E3:
+  name: EfficientNet-B0 + Focal Loss
+  config_path: configs/experiments/config_E3.yaml
+  model: efficientnet_b0
+  loss: focal
+  weighted_sampler: false
+  smote: false
+  mixup: false
+  cutmix: false
+E4:
+  name: EfficientNet-B0 + CB-Focal Loss
+  config_path: configs/experiments/config_E4.yaml
+  model: efficientnet_b0
+  loss: cb_focal
+  weighted_sampler: false
+  smote: false
+  mixup: false
+  cutmix: false
+E5:
+  name: EfficientNet-B0 + CB-Focal Loss + WeightedRandomSampler
+  config_path: configs/experiments/config_E5.yaml
+  model: efficientnet_b0
+  loss: cb_focal
+  weighted_sampler: true
+  smote: false
+  mixup: false
+  cutmix: false
+E6:
+  name: ConvNeXt-Tiny + BCE
+  config_path: configs/experiments/config_E6.yaml
+  model: convnext_tiny
+  loss: bce
+  weighted_sampler: false
+  smote: false
+  mixup: false
+  cutmix: false
+E7:
+  name: ConvNeXt-Tiny + Weighted BCE
+  config_path: configs/experiments/config_E7.yaml
+  model: convnext_tiny
+  loss: weighted_bce
+  weighted_sampler: false
+  smote: false
+  mixup: false
+  cutmix: false
+E8:
+  name: ConvNeXt-Tiny + Focal Loss
+  config_path: configs/experiments/config_E8.yaml
+  model: convnext_tiny
+  loss: focal
+  weighted_sampler: false
+  smote: false
+  mixup: false
+  cutmix: false
+E9:
+  name: ConvNeXt-Tiny + CB-Focal Loss
+  config_path: configs/experiments/config_E9.yaml
+  model: convnext_tiny
+  loss: cb_focal
+  weighted_sampler: false
+  smote: false
+  mixup: false
+  cutmix: false
+E10:
+  name: ConvNeXt-Tiny + CB-Focal Loss + WeightedRandomSampler
+  config_path: configs/experiments/config_E10.yaml
+  model: convnext_tiny
+  loss: cb_focal
+  weighted_sampler: true
+  smote: false
+  mixup: false
+  cutmix: false
+E11:
+  name: ConvNeXt-Tiny + CB-Focal Loss + Mixup
+  config_path: configs/experiments/config_E11.yaml
+  model: convnext_tiny
+  loss: cb_focal
+  weighted_sampler: false
+  smote: false
+  mixup: true
+  cutmix: false
+E12:
+  name: ConvNeXt-Tiny + CB-Focal Loss + CutMix
+  config_path: configs/experiments/config_E12.yaml
+  model: convnext_tiny
+  loss: cb_focal
+  weighted_sampler: false
+  smote: false
+  mixup: false
+  cutmix: true
+E13:
+  name: ConvNeXt-Tiny + CB-Focal Loss + SMOTE
+  config_path: configs/experiments/config_E13.yaml
+  model: convnext_tiny
+  loss: cb_focal
+  weighted_sampler: false
+  smote: true
+  mixup: false
+  cutmix: false
+E14:
+  name: Vision Transformer + CB-Focal Loss
+  config_path: configs/experiments/config_E14.yaml
+  model: vit_small_patch16_224
+  loss: cb_focal
+  weighted_sampler: false
+  smote: false
+  mixup: false
+  cutmix: false
+E15:
+  name: Swin Transformer Tiny + CB-Focal Loss
+  config_path: configs/experiments/config_E15.yaml
+  model: swin_tiny_patch4_window7_224
+  loss: cb_focal
+  weighted_sampler: false
+  smote: false
+  mixup: false
+  cutmix: false

@@ -1,0 +1,4 @@
+[2026-05-14 02:53:10 | fold_1 | INFO] Starting training for 1 epochs
+[2026-05-14 02:53:10 | fold_1 | INFO] Early stopping metric: auprc
+[2026-05-14 02:55:11 | fold_1 | INFO] Epoch   1 | train_loss=0.5069 | val_loss=0.1170 | val_auc=0.8368 | val_auprc=0.5218 | best_epoch=1
+[2026-05-14 02:55:11 | fold_1 | INFO] Training log saved to outputs/outputs/results/cv_results/fold_1/logs/fold_1_training_log.csv

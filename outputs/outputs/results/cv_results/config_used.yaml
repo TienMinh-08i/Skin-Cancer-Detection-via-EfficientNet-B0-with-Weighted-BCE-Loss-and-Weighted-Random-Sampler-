@@ -1,0 +1,122 @@
+augmentation:
+  color_jitter_brightness: 0.15
+  color_jitter_contrast: 0.15
+  color_jitter_hue: 0.02
+  color_jitter_saturation: 0.1
+  horizontal_flip_p: 0.5
+  rotation_degrees: 25.0
+  vertical_flip_p: 0.5
+dataset:
+  csv_path: !!python/object/apply:pathlib.PosixPath
+  - /
+  - home
+  - '22010759'
+  - Minhk16
+  - como
+  - content
+  - dataset
+  - train-metadata.csv
+  cv_folds: 2
+  dataset_root: !!python/object/apply:pathlib.PosixPath
+  - /
+  - home
+  - '22010759'
+  - Minhk16
+  - como
+  - content
+  - dataset
+  image_dir: !!python/object/apply:pathlib.PosixPath
+  - /
+  - home
+  - '22010759'
+  - Minhk16
+  - como
+  - content
+  - dataset
+  - image
+  image_id_cols:
+  - isic_id
+  image_size: 224
+  max_samples: null
+  random_state: 42
+  target_col: target
+device: cuda
+evaluation:
+  compute_error_analysis: true
+  compute_gradcam: false
+  error_analysis_n_samples: 20
+  save_predictions: true
+  threshold: 0.5
+imbalance:
+  cutmix_alpha: 1.0
+  cutmix_enabled: false
+  method: weighted_sampler
+  mixup_alpha: 1.0
+  mixup_enabled: false
+  smote_enabled: false
+  smote_k_neighbors: 5
+  weighted_sampler_enabled: true
+loss:
+  cb_focal_beta: 0.9999
+  focal_alpha: 0.25
+  focal_gamma: 2.0
+  loss_type: cb_focal
+model:
+  model_name: efficientnet_b0
+  num_classes: 1
+  pretrained: true
+models_cache_dir: !!python/object/apply:pathlib.PosixPath
+- /
+- home
+- '22010759'
+- Minhk16
+- como
+- models_cache
+optimizer:
+  learning_rate: 0.0003
+  momentum: 0.9
+  optimizer_type: adamw
+  weight_decay: 0.0001
+outputs:
+  checkpoints_dir: !!python/object/apply:pathlib.PosixPath
+  - outputs
+  - outputs
+  - checkpoints
+  figures_dir: !!python/object/apply:pathlib.PosixPath
+  - outputs
+  - outputs
+  - figures
+  logs_dir: !!python/object/apply:pathlib.PosixPath
+  - outputs
+  - outputs
+  - logs
+  results_dir: !!python/object/apply:pathlib.PosixPath
+  - outputs
+  - outputs
+  - results
+  root_dir: !!python/object/apply:pathlib.PosixPath
+  - outputs
+project_name: skin-cancer-classification
+scheduler:
+  cosine_t_max: 20
+  scheduler_type: cosine
+  step_gamma: 0.1
+  step_step_size: 10
+seed: 42
+threshold_optimization:
+  clinical_fn_cost_ratio: 1.0
+  enabled: true
+  methods:
+  - youden
+  - f1
+  - clinical
+training:
+  batch_size: 8
+  early_stopping_metric: auprc
+  early_stopping_patience: 5
+  gradient_accumulation_steps: 1
+  max_grad_norm: 1.0
+  num_epochs: 1
+  num_workers: 2
+  pin_memory: true
+  use_amp: false

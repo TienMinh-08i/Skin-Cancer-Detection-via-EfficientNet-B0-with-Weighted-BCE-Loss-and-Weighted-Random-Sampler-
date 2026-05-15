@@ -1,0 +1,53 @@
+{
+  "project_name": "skin-cancer-class-imbalance",
+  "seed": 42,
+  "device": "cuda",
+  "dataset": {
+    "auto_download": true,
+    "source": "kagglehub",
+    "kaggle_slug": "nischaydnk/isic-2019-jpg-224x224-resized",
+    "manual_root": null,
+    "csv_path": null,
+    "image_dir": null,
+    "target_col": "target",
+    "image_id_col": null,
+    "max_samples": null,
+    "test_size": 0.15,
+    "val_size": 0.15
+  },
+  "training": {
+    "image_size": 224,
+    "batch_size": 32,
+    "num_workers": 2,
+    "epochs": 20,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "early_stopping_patience": 3,
+    "threshold": 0.5,
+    "use_amp": true
+  },
+  "augmentation": {
+    "minority_stronger_aug": false,
+    "rotation_degrees": 25,
+    "color_jitter": {
+      "brightness": 0.15,
+      "contrast": 0.15,
+      "saturation": 0.1,
+      "hue": 0.02
+    }
+  },
+  "loss": {
+    "focal_alpha": 0.25,
+    "focal_gamma": 2.0,
+    "class_balanced_beta": 0.9999
+  },
+  "run": {
+    "experiment_plan": "core",
+    "save_all_checkpoints": false,
+    "make_gradcam": true,
+    "continue_on_experiment_error": true
+  },
+  "outputs": {
+    "root": "content/skin_cancer_outputs"
+  }
+}

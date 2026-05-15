@@ -1,0 +1,128 @@
+# HPC Configuration Template
+# Set models_cache_dir to your downloaded models directory
+# All other settings can be customized for your dataset
+
+seed: 42
+device: cuda  # Use 'cuda' for GPU or 'cpu' for CPU
+project_name: skin-cancer-classification
+models_cache_dir: /path/to/models_cache  # IMPORTANT: Set to your cached models directory
+
+# ============================================================================
+# Dataset Configuration
+# ============================================================================
+dataset:
+  dataset_root: /path/to/dataset
+  csv_path: /path/to/dataset/metadata.csv
+  image_dir: /path/to/dataset/images
+  image_size: 224
+  target_col: target  # Column name for binary labels (0 or 1)
+  image_id_cols:
+    - image_name
+  max_samples: null  # Set to number for quick testing (e.g., 100 for debug)
+  cv_folds: 5
+  random_state: 42
+
+# ============================================================================
+# Data Augmentation
+# ============================================================================
+augmentation:
+  rotation_degrees: 25.0
+  horizontal_flip_p: 0.5
+  vertical_flip_p: 0.5
+  color_jitter_brightness: 0.15
+  color_jitter_contrast: 0.15
+  color_jitter_saturation: 0.1
+  color_jitter_hue: 0.02
+
+# ============================================================================
+# Class Imbalance Handling
+# ============================================================================
+imbalance:
+  method: weighted_sampler  # Options: weighted_sampler, smote, mixup, cutmix, none
+  weighted_sampler_enabled: true
+  smote_enabled: false
+  smote_k_neighbors: 5
+  mixup_enabled: false
+  mixup_alpha: 1.0
+  cutmix_enabled: false
+  cutmix_alpha: 1.0
+
+# ============================================================================
+# Loss Function
+# ============================================================================
+loss:
+  loss_type: cb_focal  # Options: bce, weighted_bce, focal, cb_focal
+  focal_alpha: 0.25
+  focal_gamma: 2.0
+  cb_focal_beta: 0.9999
+
+# ============================================================================
+# Model Configuration
+# ============================================================================
+model:
+  model_name: efficientnet_b0  # Options: efficientnet_b0, convnext_tiny, vit_tiny, swin_tiny
+  pretrained: true  # Will use cached models from models_cache_dir
+  num_classes: 1  # Binary classification
+
+# ============================================================================
+# Optimizer Configuration
+# ============================================================================
+optimizer:
+  optimizer_type: adamw  # Options: adamw, sgd
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  momentum: 0.9  # For SGD
+
+# ============================================================================
+# Learning Rate Scheduler
+# ============================================================================
+scheduler:
+  scheduler_type: cosine  # Options: cosine, step, exponential, none
+  cosine_t_max: 20
+  step_gamma: 0.1
+  step_step_size: 10
+
+# ============================================================================
+# Training Configuration
+# ============================================================================
+training:
+  batch_size: 32  # Reduce if out of memory
+  num_epochs: 20
+  num_workers: 4  # Parallel data loading
+  pin_memory: true
+  early_stopping_patience: 5
+  early_stopping_metric: auprc  # Options: auprc, roc_auc, f1
+  use_amp: true  # Mixed precision for speed & memory
+  gradient_accumulation_steps: 1  # For larger effective batch size
+  max_grad_norm: 1.0
+
+# ============================================================================
+# Threshold Optimization
+# ============================================================================
+threshold_optimization:
+  enabled: true
+  methods:
+    - youden
+    - f1
+    - clinical
+  clinical_fn_cost_ratio: 1.0  # Cost ratio FN / FP
+
+# ============================================================================
+# Evaluation Configuration
+# ============================================================================
+evaluation:
+  threshold: 0.5
+  save_predictions: true
+  compute_gradcam: false  # Set to true for interpretability (slower)
+  compute_error_analysis: true
+  error_analysis_n_samples: 20
+
+# ============================================================================
+# Output Paths
+# ============================================================================
+outputs:
+  root_dir: ./outputs
+  checkpoints_dir: checkpoints
+  logs_dir: logs
+  figures_dir: figures
+  results_dir: results
